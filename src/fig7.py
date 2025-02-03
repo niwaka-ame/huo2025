@@ -26,7 +26,7 @@ fig.subplots_adjust(wspace=0.25, hspace=0.25)
 
 # Fig 7A
 ax = axes[0]
-p = om.platereader(ls=False, wdir="/home/yu/rawdata/gal-mal")
+p = om.platereader(ls=False, wdir=datadir)
 p.importdf(["Experiment_20230527_2"])
 rename_dict = {"1538": "ima1Δ IMA5-GFP", "1514": "WT IMA5-GFP", "BY4741": "WT"}
 split = lambda s: s.split("_")[0]
@@ -106,7 +106,7 @@ ax.tick_params(reset=True, direction="in")
 
 # Fig 7C
 ax = axes[2]
-p = om.platereader(ls=False, wdir="/home/yu/rawdata/gal-mal")
+p = om.platereader(ls=False, wdir=datadir)
 p.importdf(["Experiment_20201230_4"])
 rename_dict = {"1425": "ima1Δ", "1360": "ima5Δ", "BY4741": "WT"}
 p.s["genotype"] = p.s["strain"].apply(split).replace(rename_dict)
@@ -149,9 +149,9 @@ ax.set_ylim(0.05)
 ax.tick_params(reset=True, direction="in")
 
 axin = ax.inset_axes([0.7, 0.1, 0.28, 0.38])
-df1 = pd.read_csv("/home/yu/papers/gal-mal-paper/data/gr_data.csv")
+df1 = pd.read_csv(datadir + "../fig1/gr_data.csv")
 df1["genotype"] = "WT"
-df2 = pd.read_csv("/home/yu/papers/gal-mal-paper/data/gr_data_ima1.csv")
+df2 = pd.read_csv(datadir + "inset/gr_data_ima1.csv")
 df2["genotype"] = "ima1$\Delta$"
 q1 = "condition == '2% Pal'"
 df1 = df1.query(q1)
