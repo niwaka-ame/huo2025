@@ -36,8 +36,7 @@ p.rename(d)
 p.addcolumn("history", "strain", ["Raf", "Glu", "Pal"])
 
 q = "strain != 'Null' and condition != '0% Gal'"
-# q3 = "not (history == 'Pal' and strain == 'FY4(Pal)_2' and condition == '0.05% Gal, 0.45% Pal')"
-data = p.s.query(q)  # .query(q3)
+data = p.s.query(q)
 history_d = {"Raf": "raffinose", "Glu": "glucose", "Pal": "palatinose"}
 
 # Legend

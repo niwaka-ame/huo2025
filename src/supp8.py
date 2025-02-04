@@ -22,7 +22,7 @@ svgdir = basedir + "svg/"
 fig, axes = plt.subplots(1, 3, figsize=(12, 4), dpi=300)
 axes = axes.flat
 
-# Fig S5A
+# Fig S8A
 ax = axes[0]
 p = om.platereader(ls=False, wdir=datadir)
 p.importdf(["Experiment_20230415_2"])
@@ -62,7 +62,7 @@ ax.legend(
     fontsize="small",
 )
 
-# Fig S5B
+# Fig S8B
 ax = axes[1]
 p = om.platereader(ls=False, wdir=datadir)
 p.importdf(["Experiment_20210611_1"])
@@ -102,7 +102,7 @@ ax.legend(
     fontsize="small",
 )
 
-# Fig S5C
+# Fig S8C
 ax = axes[2]
 p = om.platereader(ls=False, wdir=datadir)
 p.importdf(["Experiment_20230531_2"])

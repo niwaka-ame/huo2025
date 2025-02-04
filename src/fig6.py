@@ -124,11 +124,9 @@ axin.set_yticks(
 )
 axin.tick_params(colors="white")
 
-fig_dir = "/home/yu/papers/gal-mal-paper/figs/"
-
 ax = axes[0]
 ax.axis("off")
-cartoon = plt.imread(fig_dir + "fig6a.png")
+cartoon = plt.imread(svgdir + "fig6a.png")
 ax.imshow(cartoon)
 
 

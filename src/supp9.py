@@ -126,8 +126,6 @@ for j, n1 in enumerate(n1s):
     )
     axin.tick_params(colors="white")
 
-fig_dir = "/home/yu/papers/gal-mal-paper/figs/"
-
 # Add subplot labels
 for n, ax in enumerate(axes):
     ax.text(
