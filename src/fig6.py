@@ -5,6 +5,7 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from sympy import symbols, Symbol, simplify, numer, Poly, nroots
 from matplotlib.colors import LogNorm
+import sys
 import os
 
 basedir = os.path.expanduser("~/huo2025/")

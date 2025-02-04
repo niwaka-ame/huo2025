@@ -1,0 +1,3 @@
+[submodule "src/utils/wela"]
+	path = src/utils/wela
+	url = https://git.ecdf.ed.ac.uk/swain-lab/wela.git
