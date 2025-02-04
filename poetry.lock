@@ -461,6 +461,25 @@ python-dateutil = ">=2.7"
 dev = ["meson-python (>=0.13.1,<0.17.0)", "numpy (>=1.25)", "pybind11 (>=2.6,!=2.13.3)", "setuptools (>=64)", "setuptools_scm (>=7)"]
 
 [[package]]
+name = "matplotlib-venn"
+version = "1.1.1"
+description = "Functions for plotting area-proportional two- and three-way Venn diagrams in matplotlib."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "matplotlib-venn-1.1.1.tar.gz", hash = "sha256:d885bc015f5091a4b8a8138ff20a7ed166c33b5c36dbc0489f95a5cbc76a2ae5"},
+]
+
+[package.dependencies]
+matplotlib = "*"
+numpy = "*"
+scipy = "*"
+
+[package.extras]
+shapely = ["shapely"]
+
+[[package]]
 name = "networkx"
 version = "3.2.1"
 description = "Python package for creating and manipulating graphs and networks"
@@ -1108,4 +1127,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "3.10.*"
-content-hash = "0def897e48260a0a1fd61cbb996bd53b0546680bba98fc2983920ac87af05875"
+content-hash = "f3fcf7eefce3ed3de65c0979623fef6a8596a9612e73f7f130bae1e3edb8830a"
