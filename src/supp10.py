@@ -75,6 +75,25 @@ for sd, ax, tt in zip([set_dict, set_dict_p01], axs, titles):
     ax.set_title(tt)
 
 ax = axes[3]
+
+for t in [0, 10, 16]:
+    df = pd.read_csv(f"{datadir}group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv")
+    process_deseq2_output(df, p_thr=0.05, gene_file=genefile)
+    qup = "change == 'upregulated'"
+    qdown = "change == 'downregulated'"
+    gene_list_up = translate_gene_list(df.query(qup)["SysName"].to_list(), df=DFGENE)
+    gene_list_down = translate_gene_list(
+        df.query(qdown)["SysName"].to_list(), df=DFGENE
+    )
+    if t == 0:
+        gene_set_up = set(gene_list_up)
+        gene_set_down = set(gene_list_down)
+    else:
+        gene_set_up = gene_set_up.intersection(set(gene_list_up))
+        gene_set_down = gene_set_down.intersection(set(gene_list_down))
+gene_set_down.remove("GAL80")
+gene_set = gene_set_up.union(gene_set_down)
+
 # WARNING: the next line will query the enrichR server - do not abuse!
 df_dict = run_enrichR(list(gene_set))
 df_dict = remove_rows(df_dict, p_thr=0.01)  # Make results concise
