@@ -120,4 +120,4 @@ for n, ax in enumerate(axes):
         size=20,
         weight="bold",
     )
-plt.savefig(figdir + "supp4.png", bbox_inches="tight")
+plt.savefig(figdir + "supp4.png", bbox_inches="tight", dpi=300)
