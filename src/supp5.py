@@ -75,7 +75,7 @@ lineplot_with_error(
     hue="condition",
     alpha=0.5,
 )
-ax.set_ylabel("IMA5-GFP per OD (A.U.)")
+ax.set_ylabel("Ima5-GFP per OD (A.U.)")
 ax.set_xlabel("OD (A.U.)")
 legend_names = sorted(cond)
 legend_handles = [
