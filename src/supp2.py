@@ -29,7 +29,7 @@ datasets = [
     "1515_2023_03_31_ss_switch_2pc_pyr_to_1pc_pal_0_2_pc_gal_cy5_gfp_00",
     "1498_2023_03_30_ss_switch_2pc_pyr_to_1pc_pal_0p2pc_suc_cy5_gfp_00",
 ]
-fig = plt.figure(figsize=(12, 6))
+fig = plt.figure(figsize=(8, 8))
 titles = ["1% pal", "0.2% gal + 1% pal", "0.2% suc + 1% pal"]
 cmap_offsets = [16, 12, 8]
 axes = []
@@ -39,7 +39,7 @@ for i, dataname in enumerate(datasets):
     t_and_ts = dl.get_time_series(signal="median_GFP", group=1121)
     ts = t_and_ts[1]
     ts_oi = np.log10(ts[:, [0, 72, 144, 216]])
-    ax = fig.add_subplot(1, 3, i + 1, projection="3d")
+    ax = fig.add_subplot(2, 2, i + 1, projection="3d")
     axes.append(ax)
     bins = np.linspace(2, 3.5, 15)
     xs = (bins[:-1] + bins[1:]) / 2
@@ -65,7 +65,7 @@ for i, dataname in enumerate(datasets):
     ax.plot(xlims, [4, 4], [0, 0], color="red", alpha=0.5)
     ax.set_zlabel("density")
     ax.set_ylabel("time (h)")
-fig.subplots_adjust(wspace=0.2)
+fig.subplots_adjust(wspace=0.2, hspace=0.3)
 for n, ax in enumerate(axes):
     ax.text2D(
         -0.05,
@@ -75,4 +75,4 @@ for n, ax in enumerate(axes):
         size=20,
         weight="bold",
     )
-plt.savefig(figdir + "supp2.png", bbox_inches="tight", dpi=300)
+plt.savefig(figdir + "supp2.png", dpi=300)
