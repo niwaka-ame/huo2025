@@ -2,9 +2,13 @@ library(tidyqpcr)
 library(dplyr)
 library(repr)
 library(ggplot2)
+library(rstudioapi)
 
-dir <- "~/huo2025/data/supp6/"
-fig_dir <- "~/huo2025/fig/"
+script_path <- rstudioapi::getSourceEditorContext()$path
+
+dir <- dirname(dirname(dirname(script_path)))
+data_dir <- file.path(dir, "data/supp6")
+fig_dir <- file.path(dir, "fig")
 
 # Names of target genes
 gene_name_values <- c(rep(c("GAL1", "GAL2", "GAL4", "GAL7", "GAL80", "MAL11"), times=2), rep(c("MAL13", "ZNF1", "IMA5", "ACT1", "ALG9", "PUS7"),times=2))
@@ -36,7 +40,7 @@ plate1plan <-
     colkey
   )
 
-setwd(dir)
+setwd(data_dir)
 plate_cq_data <- read_lightcycler_1colour_cq(
   "20220615_Yu_qPCR_GAL2_OE_Cq.txt",
 ) %>% right_join(plate1plan)
@@ -59,7 +63,7 @@ plate_deltanorm_med <- plate_deltanorm %>%
 
 
 ppi <- 300
-png(file.path(fig_dir, "supp6c.png"), width = 4*ppi, height = 4*ppi, res = ppi)
+png(file.path(fig_dir, "supp6c.png"), width = 3.5*ppi, height = 4*ppi, res = ppi)
 ggplot(data = filter(plate_deltanorm_med, target_id %in% c("GAL1", "GAL2", "GAL80"))) +
   geom_point(aes(x = condition, y = deltadelta_cq, colour = strain), size=5, alpha=0.7) +
   labs(

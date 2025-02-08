@@ -1,17 +1,22 @@
-library("dplyr")
-library("readr")
-library("tibble")
-library("tidyr")
-library("DESeq2")
-library("glue")
+library(dplyr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(DESeq2)
+library(glue)
+library(rstudioapi)
 
-dir <- "~/huo2025/data/rnaseq/"
+script_path <- rstudioapi::getSourceEditorContext()$path
+
+dir <- dirname(dirname(dirname(script_path)))
+data_dir <- file.path(dir, "data/rnaseq")
+fig_dir <- file.path(dir, "fig")
+
 cts_file <- "processed_reads_for_deseq2.csv"
 col_file <- "input_experiment.csv"
-fig_dir <- "~/huo2025/fig/"
 # Load
-cts <- read_csv(file.path(dir, cts_file)) %>% column_to_rownames("Geneid")
-coldata <- read_csv(file.path(dir, col_file)) 
+cts <- read_csv(file.path(data_dir, cts_file)) %>% column_to_rownames("Geneid")
+coldata <- read_csv(file.path(data_dir, col_file)) 
 # Wrangle
 coldata <- coldata %>% column_to_rownames("SampleID")
 tp.to.midlog <- Vectorize(function(x) {if (x == "0h") {"mid-log"} else {paste("mid-log", x, sep="\n+ ")}})

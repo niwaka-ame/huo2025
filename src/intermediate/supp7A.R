@@ -2,9 +2,13 @@ library(tidyqpcr)
 library(dplyr)
 library(repr)
 library(ggplot2)
+library(rstudioapi)
 
-dir <- "~/huo2025/data/supp7/"
-fig_dir <- "~/huo2025/fig/"
+script_path <- rstudioapi::getSourceEditorContext()$path
+
+dir <- dirname(dirname(dirname(script_path)))
+data_dir <- file.path(dir, "data/supp7")
+fig_dir <- file.path(dir, "fig")
 
 gene_name_levels <- c("GAL1", "GAL2", "GAL4", "GAL7", "GAL80", "ACT1", "ALG9", "PUS7")
 gene_name_values <- rep(gene_name_levels, times = 2)
@@ -44,7 +48,7 @@ plate1plan <-
     colkey
   )
 
-setwd(dir)
+setwd(data_dir)
 plate_cq_data <- read_lightcycler_1colour_cq(
   "20220217_Yu_qPCR_GAL_in_fru_and_gal_Cq.txt",
 ) %>% right_join(plate1plan)

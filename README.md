@@ -34,7 +34,7 @@ cd ~/Downloads/huo2025  # make sure we're in the codes' folder
 poetry install
 ```
 
-3. To reproduce Fig S6, S7 and S11, we need to install R with the following packages: `tidyverse`, `ggplot2`, `BiocManager`, `DESeq2`, `devtools`, `tidyqpcr`, `repr`. 
+3. To reproduce Fig S6, S7 and S11, we need to install R, RStudio and the following packages: `tidyverse`, `rstudioapi`, `BiocManager`, `devtools`, `repr`, `ggplot2`(3.5.1), `DESeq2`(1.46.0), `tidyqpcr`(1.1). 
 
 ## Reproduce the figures
 1. Now under the folder `~/huo2025/` there should be three folders: `data`, `src` and `svg`.
@@ -48,7 +48,7 @@ mkdir fig
 cd ~/Downloads/huo2025 # where the codes are stored
 python src/fig1.py
 ```
-4. To reproduce Figures S6 and S7, make sure you run the R codes first in the `src/intermediate` folder.
+4. To reproduce Figures S6 and S7, make sure you run the R codes first in the `src/intermediate` folder. The output panels will be stored in the `fig` folder.
 
 ## Note
 The code for Figure S10 will send request to the YeastEnrichR server; please pay attention to the frequency of request. 
