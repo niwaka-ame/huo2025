@@ -18,7 +18,9 @@ pipx install poetry
 ```sh
 conda create -n huo2025fig python=3.10
 conda activate huo2025fig
-cd ~/Downloads/huo2025  # change this to where the codes downloaded from Zenodo are stored
+mkdir ~/temp  # where you want to temporarily store this code repository
+cd ~/temp
+git clone https://git.ecdf.ed.ac.uk/s1856140/huo2025.git
 git submodule update --init
 poetry install
 ```
@@ -30,22 +32,25 @@ pip install -U pandas==1.4.4
 ```
 To upgrade `pandas` back to the version specified by `poetry` after reproducing Fig S2:
 ```sh
-cd ~/Downloads/huo2025  # make sure we're in the codes' folder
+cd ~/temp/huo2025  # make sure we are in the code repository
 poetry install
 ```
 
 3. To reproduce Fig S6, S7 and S11, we need to install R, RStudio and the following packages: `tidyverse`, `rstudioapi`, `BiocManager`, `devtools`, `repr`, `ggplot2`, `DESeq2`, `tidyqpcr`. 
 
+## Fetching the data from Zenodo
+The data needed to reproduce the figures are hosted on Zenodo. Download and unzip `data.zip` and move the `data` folder into the code repository, e.g. `~/temp/huo2025`.
+
 ## Reproduce the figures
-1. Now under the folder `~/huo2025/` there should be three folders: `data`, `src` and `svg`.
+1. Now under the folder there should be three folders: `src` and `svg`.
 2. Create a new folder to store the reproduced figures:
 ``` sh
-cd ~/Downloads/huo2025 # where the codes are stored
+cd ~/temp/huo2025 # the code repository
 mkdir fig
 ```
 3. Run the Python files one by one in the `src` folder, e.g.
 ```sh
-cd ~/Downloads/huo2025 # where the codes are stored
+cd ~/temp/huo2025 # the code repository
 python src/fig1.py
 ```
 4. To reproduce Figures S6 and S7, make sure you run the R codes first in the `src/intermediate` folder. The output panels will be stored in the `fig` folder.
