@@ -1,4 +1,4 @@
-# Code of figures in Huo _et al._ _Commun. Biol._ (2025)
+# Codes for figures in Huo _et al._ _Commun. Biol._ (2025)
 This repository is a step-by-step guide to reproduce the figures in Huo _et al._ _Commun. Biol._ (2025).
 
 ## Prerequisites
