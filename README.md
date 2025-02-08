@@ -34,7 +34,7 @@ cd ~/Downloads/huo2025  # make sure we're in the codes' folder
 poetry install
 ```
 
-3. To reproduce Fig S6, S7 and S11, we need to install R, RStudio and the following packages: `tidyverse`, `rstudioapi`, `BiocManager`, `devtools`, `repr`, `ggplot2`(3.5.1), `DESeq2`(1.46.0), `tidyqpcr`(1.1). 
+3. To reproduce Fig S6, S7 and S11, we need to install R, RStudio and the following packages: `tidyverse`, `rstudioapi`, `BiocManager`, `devtools`, `repr`, `ggplot2`, `DESeq2`, `tidyqpcr`. 
 
 ## Reproduce the figures
 1. Now under the folder `~/huo2025/` there should be three folders: `data`, `src` and `svg`.
