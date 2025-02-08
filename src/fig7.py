@@ -4,20 +4,19 @@ import numpy as np
 import omniplate as om
 import pandas as pd
 import seaborn as sns
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from om_extra import *
+from utils.om_extra import *
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/fig7/"
-figdir = basedir + "fig/"
-svgdir = basedir + "svg/"
+datadir = os.path.join(basedir, "data", "fig7")
+figdir = os.path.join(basedir, "fig")
+svgdir = os.path.join(basedir, "svg")
 
 # Framework
 fig, axes = plt.subplots(1, 3, figsize=(12, 4), dpi=300)
@@ -149,9 +148,9 @@ ax.set_ylim(0.05)
 ax.tick_params(reset=True, direction="in")
 
 axin = ax.inset_axes([0.7, 0.1, 0.28, 0.38])
-df1 = pd.read_csv(datadir + "../fig1/gr_data.csv")
+df1 = pd.read_csv(os.path.join(datadir, "../fig1/gr_data.csv"))
 df1["genotype"] = "WT"
-df2 = pd.read_csv(datadir + "inset/gr_data_ima1.csv")
+df2 = pd.read_csv(os.path.join(datadir, "inset/gr_data_ima1.csv"))
 df2["genotype"] = "ima1$\Delta$"
 q1 = "condition == '2% Pal'"
 df1 = df1.query(q1)
@@ -193,4 +192,4 @@ for n, ax in enumerate(axes):
         size=20,
         weight="bold",
     )
-plt.savefig(figdir + "fig7.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "fig7.png"), bbox_inches="tight")

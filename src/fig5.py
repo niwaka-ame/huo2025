@@ -4,26 +4,25 @@ import numpy as np
 import omniplate as om
 import pandas as pd
 import seaborn as sns
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from om_extra import *
+from utils.om_extra import *
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/fig5/"
-figdir = basedir + "fig/"
-svgdir = basedir + "svg/"
+datadir = os.path.join(basedir, "data", "fig5")
+figdir = os.path.join(basedir, "fig")
+svgdir = os.path.join(basedir, "svg")
 
 # Framework
 fig, axes = plt.subplots(1, 4, figsize=(13, 4), dpi=300)
 fig.subplots_adjust(wspace=0.25)
 # Fig 5ABC
-df = pd.read_csv(datadir + "../rnaseq/processed_reads.csv")
+df = pd.read_csv(os.path.join(datadir, "../rnaseq/processed_reads.csv"))
 df["gc"] = df["genotype"] + " in " + df["condition"]
 tp_name = ["mid-log", "+10h", "+16h"]
 d = {i + 1: tp_name[i] for i in range(3)}
@@ -125,4 +124,4 @@ for n, ax in enumerate(axes):
         size=20,
         weight="bold",
     )
-plt.savefig(figdir + "fig5.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "fig5.png"), bbox_inches="tight")

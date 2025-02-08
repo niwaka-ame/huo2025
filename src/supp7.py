@@ -5,20 +5,19 @@ import omniplate as om
 import pandas as pd
 import seaborn as sns
 import string
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from om_extra import *
-from diff_exp import *
+from utils.om_extra import *
+from utils.diff_exp import *
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/rnaseq/"
-figdir = basedir + "fig/"
-genefile = datadir + "yeast.txt"
+datadir = os.path.join(basedir, "data/rnaseq")
+figdir = os.path.join(basedir, "fig")
+genefile = os.path.join(datadir, "yeast.txt")
 
 sns.set_theme(context="paper", style="white")
 
@@ -39,7 +38,7 @@ fig.subplots_adjust(hspace=0.25)
 # Fig S7A
 ax = axes[0]
 ax.axis("off")
-data = plt.imread(figdir + "supp7a.png")
+data = plt.imread(os.path.join(figdir, "supp7a.png"))
 ax.imshow(data)
 
 #####
@@ -105,7 +104,7 @@ ax.tick_params(reset=True, direction="in")
 # Fig S7C - PCA
 ax = axes[2]
 ax.axis("off")
-data = plt.imread(figdir + "supp7c.png")
+data = plt.imread(os.path.join(figdir, "supp7c.png"))
 ax.imshow(data)
 
 ######
@@ -122,7 +121,7 @@ for i, e in enumerate(expt_list, start=3):
     ax = axes[i]
     palette = ["grey", "red", "blue"]
     hue_order = ["insignificant", "upregulated", "downregulated"]
-    df = pd.read_csv(datadir + e)
+    df = pd.read_csv(os.path.join(datadir, e))
     process_deseq2_output(df, gene_file=genefile)
     df["log2baseMean"] = df["baseMean"].apply(np.log2)
     length = df["change"].value_counts().shape[0]
@@ -170,7 +169,7 @@ for i, e in enumerate(expt_list, start=3):
 
 #####
 # Fig S7F
-df = pd.read_csv(datadir + "processed_reads.csv")
+df = pd.read_csv(os.path.join(datadir, "processed_reads.csv"))
 df["gc"] = df["genotype"] + " in " + df["condition"]
 tp_name = ["mid-log", "+10h", "+16h"]
 d = {i + 1: tp_name[i] for i in range(3)}
@@ -225,4 +224,4 @@ for n, ax in enumerate(axes[:6]):
     )
 
 plt.subplots_adjust(wspace=0.25)
-plt.savefig(figdir + "supp7.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "supp7.png"), bbox_inches="tight")

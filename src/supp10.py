@@ -4,22 +4,21 @@ import numpy as np
 import omniplate as om
 import pandas as pd
 import seaborn as sns
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from diff_exp import *
-from yeastEnrichR import *
+from utils.diff_exp import *
+from utils.yeastEnrichR import *
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/rnaseq/"
-figdir = basedir + "fig/"
-svgdir = basedir + "svg/"
-genefile = datadir + "yeast.txt"
+datadir = os.path.join(basedir, "data", "rnaseq")
+figdir = os.path.join(basedir, "fig")
+svgdir = os.path.join(basedir, "svg")
+genefile = os.path.join(datadir, "yeast.txt")
 
 DFGENE = pd.read_csv(
     genefile,
@@ -48,7 +47,7 @@ axes[2].axis("off")
 
 set_dict = {}
 for t in [0, 10, 16]:
-    df = pd.read_csv(f"{datadir}group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv")
+    df = pd.read_csv(os.path.join(datadir, f"group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv"))
     process_deseq2_output(df, p_thr=0.05, gene_file=genefile)
     q = "change == 'upregulated' or change == 'downregulated'"
     set_temp = set(translate_gene_list(df.query(q)["SysName"].to_list(), df=DFGENE))
@@ -57,7 +56,7 @@ for t in [0, 10, 16]:
 
 set_dict_p01 = {}
 for t in [0, 10, 16]:
-    df = pd.read_csv(f"{datadir}group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv")
+    df = pd.read_csv(os.path.join(datadir, f"group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv"))
     process_deseq2_output(df, p_thr=0.01, gene_file=genefile)
     q = "change == 'upregulated' or change == 'downregulated'"
     set_temp = set(translate_gene_list(df.query(q)["SysName"].to_list(), df=DFGENE))
@@ -77,7 +76,7 @@ for sd, ax, tt in zip([set_dict, set_dict_p01], axs, titles):
 ax = axes[3]
 
 for t in [0, 10, 16]:
-    df = pd.read_csv(f"{datadir}group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv")
+    df = pd.read_csv(os.path.join(datadir, f"group_gal80.Fru.{t}h_vs_WT.Fru.{t}h.csv"))
     process_deseq2_output(df, p_thr=0.05, gene_file=genefile)
     qup = "change == 'upregulated'"
     qdown = "change == 'downregulated'"
@@ -151,4 +150,4 @@ for n, ax in enumerate(axes[[0, 1, 3, 4]]):
         weight="bold",
     )
 
-plt.savefig(figdir + "supp10.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "supp10.png"), bbox_inches="tight")

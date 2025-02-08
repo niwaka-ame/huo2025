@@ -4,20 +4,19 @@ import numpy as np
 import omniplate as om
 import pandas as pd
 import seaborn as sns
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from om_extra import *
+from utils.om_extra import *
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/fig4/"
-figdir = basedir + "fig/"
-svgdir = basedir + "svg/"
+datadir = os.path.join(basedir, "data", "fig4")
+figdir = os.path.join(basedir, "fig")
+svgdir = os.path.join(basedir, "svg")
 
 # Framework
 fig, axes = plt.subplots(1, 3, figsize=(12, 4), dpi=300)
@@ -202,4 +201,4 @@ for n, ax in enumerate(axes):
         size=20,
         weight="bold",
     )
-plt.savefig(figdir + "fig4.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "fig4.png"), bbox_inches="tight")

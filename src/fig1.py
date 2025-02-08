@@ -4,20 +4,19 @@ import numpy as np
 import omniplate as om
 import pandas as pd
 import seaborn as sns
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from om_extra import *
+from utils.om_extra import *
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/fig1/"
-figdir = basedir + "fig/"
-svgdir = basedir + "svg/"
+datadir = os.path.join(basedir, "data", "fig1")
+figdir = os.path.join(basedir, "fig")
+svgdir = os.path.join(basedir, "svg")
 
 # Framework
 layout = """
@@ -30,7 +29,7 @@ axes = np.asarray(list(axes.values()))
 # Cartoon - method
 ax = axes[0]
 ax.axis("off")
-cartoon = plt.imread(svgdir + "fig1a.png")
+cartoon = plt.imread(os.path.join(svgdir, "fig1a.png"))
 ax.imshow(cartoon)
 
 cmap = plt.get_cmap("tab10")
@@ -47,7 +46,7 @@ except:
     pass
 
 ax = axes[1]
-df = pd.read_csv(datadir + "gr_data.csv")
+df = pd.read_csv(os.path.join(datadir, "gr_data.csv"))
 order = ["2% Glu", "2% Fru", "2% Suc", "2% Gal", "2% Pal"]
 q = "experiment != '20220218_fru'"
 sns.stripplot(
@@ -89,4 +88,4 @@ for n, ax in enumerate(axes):
         weight="bold",
     )
 plt.subplots_adjust(wspace=0.3)
-plt.savefig(figdir + "fig1.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "fig1.png"), bbox_inches="tight")

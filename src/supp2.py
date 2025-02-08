@@ -1,4 +1,3 @@
-import sys
 import os
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -9,17 +8,15 @@ import numpy as np
 
 basedir = os.path.expanduser("~/huo2025/")
 
-sys.path.append(basedir + "src/utils/")
-import wela
 from wela.dataloader import dataloader
 from wela.plotting import kymograph, plot_lineage
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/supp2/"
-tsvdir = datadir + "tsv/"
-figdir = basedir + "fig/"
+datadir = os.path.join(basedir, "data", "supp2")
+tsvdir = os.path.join(datadir, "tsv")
+figdir = os.path.join(basedir, "fig")
 
 # from genutils import figs2pdf
 import matplotlib.cm
@@ -75,4 +72,4 @@ for n, ax in enumerate(axes):
         size=20,
         weight="bold",
     )
-plt.savefig(figdir + "supp2.png", dpi=300)
+plt.savefig(os.path.join(figdir, "supp2.png"), dpi=300)

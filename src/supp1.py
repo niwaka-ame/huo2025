@@ -5,20 +5,19 @@ from functools import reduce
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import linregress
-import sys
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
-sys.path.append(basedir + "src/utils/")
-from om_extra import *
+from utils.om_extra import *
 import string
 
 sns.set_theme(context="paper", style="white")
 
-datadir = basedir + "data/supp1/"
-figdir = basedir + "fig/"
-svgdir = basedir + "svg/"
+datadir = os.path.join(basedir, "data", "supp1")
+figdir = os.path.join(basedir, "fig")
+svgdir = os.path.join(basedir, "svg")
 
 
 def most_prom_peak(x, num):
@@ -155,4 +154,4 @@ add_maxOD_to_sc(p)
 results2 = get_peak_valley(p, "Glu", "Pal")
 plot_OD_vs_conc(p, results2, "Glu", "Pal", ax)
 ax.tick_params(reset=True, direction="in")
-plt.savefig(figdir + "supp1.png", bbox_inches="tight")
+plt.savefig(os.path.join(figdir, "supp1.png"), bbox_inches="tight")
