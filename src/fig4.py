@@ -68,7 +68,6 @@ ax.legend(
     loc="lower right",
     fontsize="small",
 )
-ax.set_title("gal80$\\Delta$ in Gal+Pal")
 ax.set_yscale("log", base=2)
 ax.set_yscale("log", base=2)
 ax.set_ylim(
@@ -125,7 +124,6 @@ ax.legend(
     loc="lower right",
     fontsize="small",
 )
-ax.set_title("gal80$\\Delta$ & gal80$\\Delta$ gal2$\\Delta$ in Fru+Pal")
 ax.set_yscale("log", base=2)
 ax.set_ylim(
     0.04,
@@ -189,7 +187,6 @@ ax.legend(
     loc="lower right",
     fontsize="small",
 )
-ax.set_title("GAL2-OE in Fru+Pal")
 
 # Add subplot labels
 for n, ax in enumerate(axes):
