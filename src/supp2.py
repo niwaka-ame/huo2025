@@ -1,12 +1,10 @@
 import os
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-# from mpl_toolkits.mplot3d import Axes3D
-
 import numpy as np
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, ".."))
 
 from wela.dataloader import dataloader
 from wela.plotting import kymograph, plot_lineage
