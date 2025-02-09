@@ -4,12 +4,13 @@ import pandas as pd
 import gaussianprocessderivatives as gp
 import os
 
-basedir = os.path.expanduser("~/huo2025/")
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+basedir = os.path.abspath(os.path.join(scriptdir, "..", ".."))
+datadir = os.path.join(basedir, "data", "fig3")
 
-datadir = basedir + "data/fig3/"
 
 # load OD data
-wb = opx.load_workbook(datadir + "OD_Check_20211105_fixed.xlsx")
+wb = opx.load_workbook(os.path.join(datadir, "OD_Check_20211105_fixed.xlsx"))
 for i in [1, 2]:
     wb.remove(wb["Sheet" + str(i)])
 conditions = ["0.1% Gal, 0.4% Pal"] * 3 + ["0.1% Gal"] * 3
@@ -75,7 +76,7 @@ gdf = gdf.apply(correct_media, args=(gdf,), axis=1)
 # correct OD
 x = []
 y = []
-od_corr_file = datadir + "dilution_data_xiao.tsv"
+od_corr_file = os.path.join(datadir, "dilution_data_xiao.tsv")
 with open(od_corr_file) as ocf:
     for line in ocf:
         x.append(float(line.split("\t")[0]))
@@ -97,7 +98,7 @@ gdf["GP err"] = pd.Series(g.fvar)
 
 # metabolomics data
 met = pd.read_excel(
-    datadir + "Galactose and Palatinose Analysis.xlsx",
+    os.path.join(datadir, r"Galactose and Palatinose Analysis.xlsx"),
     sheet_name=2,
     header=1,
     skiprows=[2, 3],
