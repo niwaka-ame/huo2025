@@ -62,4 +62,4 @@ The figure will be output to the `fig` folder.
 3. To reproduce Figures S6 and S7, make sure you run the R code first in the `src/intermediate` folder. The panels will be output to the `fig` folder.
 
 ## Note
-The code for Figure S10 will send request to the YeastEnrichR server; please pay attention to the frequency of request. 
+The code for Figure S10 will send request to the [YeastEnrichR server](https://maayanlab.cloud/YeastEnrichr/); please pay attention to the frequency of request. 
