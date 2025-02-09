@@ -42,18 +42,14 @@ poetry install
 The data needed to reproduce the figures are available on Zenodo: https://doi.org/10.5281/zenodo.14840343. Download and unzip `data.zip` and move the `data` folder into the code repository, e.g. `~/temp/huo2025`.
 
 ## Reproducing the figures
-1. Now under the folder there should be three folders: `data`, `src` and `svg`.
-2. Create a new folder to store the reproduced figures:
-``` sh
-cd ~/temp/huo2025 # the code repository
-mkdir fig
-```
-3. Run the Python files one by one in the `src` folder, e.g.
+1. Now under the folder there should be four folders: `data`, `src`, `fig` and `svg`.
+2. Run the Python files one by one in the `src` folder, e.g.
 ```sh
 cd ~/temp/huo2025 # the code repository
 python src/fig1.py
 ```
-4. To reproduce Figures S6 and S7, make sure you run the R code first in the `src/intermediate` folder. The output panels will be stored in the `fig` folder.
+The figure will be output to the `fig` folder.
+3. To reproduce Figures S6 and S7, make sure you run the R code first in the `src/intermediate` folder. The panels will be output to the `fig` folder.
 
 ## Note
 The code for Figure S10 will send request to the YeastEnrichR server; please pay attention to the frequency of request. 
