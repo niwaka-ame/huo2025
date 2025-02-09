@@ -1,14 +1,18 @@
-library("dplyr")
-library("readr")
-library("tibble")
-library("tidyr")
-library("pheatmap")
-library("glue")
+library(dplyr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(pheatmap)
+library(glue)
+library(rstudioapi)
 
-dir <- "~/huo2025/data/rnaseq/"
-fig_dir <- "~/huo2025/fig/"
+script_path <- rstudioapi::getSourceEditorContext()$path
 
-setwd(dir)
+dir <- dirname(dirname(script_path))
+data_dir <- file.path(dir, "data/rnaseq")
+fig_dir <- file.path(dir, "fig")
+
+setwd(data_dir)
 for (i in c(0, 10 ,16)) {
   fname <- glue("group_gal80.Fru.{i}h_vs_WT.Fru.{i}h.csv")
   if (i == 0){
@@ -34,8 +38,6 @@ tb <- tb %>% mutate(systematic = split.genename(...1, "_")) %>% left_join(dfgene
 
 hm.mat <- tb %>% pivot_wider(names_from = Timepoint, values_from = log2FoldChange) %>% column_to_rownames(var="gene") %>% as.matrix()
 
-# breaks <- seq(-2, 2, length.out = 101)
-# pheatmap(hm.mat, fontsize_row=4, breaks= breaks, cellheight = 4, cellwidth = 20, cutree_rows = 5)
 
 # For presentation
 breaks <- seq(-2, 2, length.out = 101)
