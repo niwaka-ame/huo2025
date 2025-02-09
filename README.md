@@ -51,12 +51,14 @@ unzip data.zip  # you may need to install `unzip` if missing
 
 ## Reproducing the figures
 1. Now under the folder there should be four folders: `data`, `src`, `fig` and `svg`.
+
 2. Run the Python files one by one in the `src` folder, e.g.
 ```sh
 cd ~/temp/huo2025 # the code repository
 python src/fig1.py
 ```
 The figure will be output to the `fig` folder.
+
 3. To reproduce Figures S6 and S7, make sure you run the R code first in the `src/intermediate` folder. The panels will be output to the `fig` folder.
 
 ## Note
