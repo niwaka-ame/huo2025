@@ -42,7 +42,7 @@ poetry install
 The data needed to reproduce the figures are available on Zenodo: https://doi.org/10.5281/zenodo.14840343. Download and unzip `data.zip` and move the `data` folder into the code repository, e.g. `~/temp/huo2025`.
 
 ## Reproducing the figures
-1. Now under the folder there should be three folders: `src` and `svg`.
+1. Now under the folder there should be three folders: `data`, `src` and `svg`.
 2. Create a new folder to store the reproduced figures:
 ``` sh
 cd ~/temp/huo2025 # the code repository
