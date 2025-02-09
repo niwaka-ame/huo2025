@@ -39,7 +39,7 @@ poetry install
 3. To reproduce Fig S6, S7 and S11, we need to install R, RStudio and the following packages: `tidyverse`, `rstudioapi`, `BiocManager`, `devtools`, `repr`, `ggplot2`, `DESeq2`, `tidyqpcr`. 
 
 ## Fetching the data from Zenodo
-The data needed to reproduce the figures are hosted on Zenodo. Download and unzip `data.zip` and move the `data` folder into the code repository, e.g. `~/temp/huo2025`.
+The data needed to reproduce the figures are available on Zenodo: https://doi.org/10.5281/zenodo.14840343. Download and unzip `data.zip` and move the `data` folder into the code repository, e.g. `~/temp/huo2025`.
 
 ## Reproducing the figures
 1. Now under the folder there should be three folders: `src` and `svg`.
