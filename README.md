@@ -22,6 +22,7 @@ conda activate huo2025fig
 mkdir ~/temp  # where you want to temporarily store this code repository
 cd ~/temp
 git clone https://git.ecdf.ed.ac.uk/s1856140/huo2025.git
+cd huo2025
 git submodule update --init
 poetry install
 ```
