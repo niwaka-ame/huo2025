@@ -1,4 +1,4 @@
-# Codes for figures in Huo _et al._ (2025). The type of carbon source, not the growth rate it supports, can determine diauxie in _Saccharomyces cerevisiae_. _Communications Biology_. 
+# Code for figures in Huo _et al._ (2025). The type of carbon source, not the growth rate it supports, can determine diauxie in _Saccharomyces cerevisiae_. _Communications Biology_. 
 This repository is a step-by-step guide to reproduce the figures in Huo _et al._ _Commun. Biol._ (2025).
 
 ## Prerequisites
@@ -53,7 +53,7 @@ mkdir fig
 cd ~/temp/huo2025 # the code repository
 python src/fig1.py
 ```
-4. To reproduce Figures S6 and S7, make sure you run the R codes first in the `src/intermediate` folder. The output panels will be stored in the `fig` folder.
+4. To reproduce Figures S6 and S7, make sure you run the R code first in the `src/intermediate` folder. The output panels will be stored in the `fig` folder.
 
 ## Note
 The code for Figure S10 will send request to the YeastEnrichR server; please pay attention to the frequency of request. 
